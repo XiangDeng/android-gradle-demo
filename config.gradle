@@ -1,0 +1,127 @@
+ext {
+    // SDK And Tools
+    COMPILE_SDK_VERSION = 28
+    BUILD_TOOLS_VERSION = '28.0.3'
+    MIN_SDK_VERSION = 19
+    TARGET_SDK_VERSION = 19
+
+    SUPPORT_VERSION = '28.0.0'
+
+    KOTLIN_VERSION = '1.2.30'
+
+    CALM_SKIN_VERSION = '1.0.9'
+
+    //APP
+    calm = [
+            applicationId: "com.shishike.calm"
+    ]
+    //android libs
+    androidsdk = [
+            supportV4       : 'androidx.legacy:legacy-support-v4:1.0.0',
+            testRules       : 'androidx.test:rules:1.1.0',
+            testRunner      : 'androidx.test:runner:1.1.0',
+            testEspressoCore: 'androidx.test.espresso:espresso-core:3.1.0',
+            junit           : "junit:junit:4.12",
+            mockito         : "org.mockito:mockito-core:2.8.9",
+            powermock       : "org.powermock:powermock-api-mockito2:1.7.4",
+            powermock_junit : "org.powermock:powermock-module-junit4:1.7.4",
+            powermock_rule  : "org.powermock:powermock-module-junit4-rule:1.7.4",
+            gson            : "com.google.code.gson:gson:2.8.1",
+            multidex        : 'androidx.multidex:multidex:2.0.0',
+            recyclerview    : 'androidx.recyclerview:recyclerview:1.0.0',
+            cardview        : 'androidx.cardview:cardview:1.0.0',
+            appcompatV7     : 'androidx.appcompat:appcompat:1.0.0',
+            constraintLayout: 'androidx.constraintlayout:constraintlayout:1.1.3'
+    ]
+    //calm libs
+    calmsdk = [
+            phonebox       : [group: 'com.shishike', name: 'phonebox', version: '1.0.0', classifier: 'release', ext: 'jar'],
+            calm_context   : "com.keruyun.calm:calm-context:1.0.0-SNAPSHOT",
+            calm_db        : "com.keruyun.calm:calm-db:1.0.0-SNAPSHOT",
+            calm_http      : "com.keruyun.calm:calm-http:1.0.0-SNAPSHOT",
+            calm_sync      : "com.keruyun.calm:calm-sync:1.0.0-SNAPSHOT",
+            calm_ui        : "com.keruyun.calm:calm-ui:1.0.0-SNAPSHOT",
+            calm_ui_display: "com.keruyun.calm:calm-ui-display:1.0.0-SNAPSHOT",
+            calm_ui_res    : "com.keruyun.calm:calm-ui-res:1.0.0-SNAPSHOT",
+            calm_router    : "com.keruyun.calm:calm-router:1.0.0-SNAPSHOT",
+            calm_admodule  : "com.keruyun.calm:admodule:1.0.0-SNAPSHOT",
+            calm_data      : "com.keruyun.calm:calm-data:1.0.0-SNAPSHOT",
+            calm_devices   : "com.keruyun.calm:calm-devices:1.0.0-SNAPSHOT",
+            calm_mobilepay : "com.keruyun.calm:calm-mobilepay:1.0.0-SNAPSHOT",
+            fsOfflineServer: "com.keruyun.calm:calm-fs-offline-server:1.0.0-SNAPSHOT",
+            calm_phone     : "com.keruyun.calm:app-phone:1.0.0-SNAPSHOT",
+            calm_talent    : "com.keruyun.calm:app-talent:1.0.0-SNAPSHOT",
+            //dnsCache       : "com.keruyun.calm:dnscache:0.1.3",
+            dns_discovery  : "com.keruyun.calm:dns-discovery:1.0.2",
+            //push           : "com.keruyun.calm:push:0.3.0-SNAPSHOT",
+            push_netty     : "com.keruyun.calm:push-netty:3.1.0-SNAPSHOT",
+            displaySDK     : "com.keruyun.calm:displaysdk:1.0.4",
+            imageloader    : "com.keruyun.calm:imageloader:1.0.1",
+            posNanoServer  : "com.keruyun.pos:pos-nano-server:2.1.2",
+            calmMsglib     : "com.keruyun.calm:calmMsglib:1.0.0@aar",
+            faceplatformUI : [group: 'com.keruyun.calm', name: 'calm-faceplatform-ui', version: '1.0.0-SNAPSHOT', classifier: 'release', ext: 'aar'],
+            basemodule     : "com.keruyun.calm:calm-basemodule:1.0.0-SNAPSHOT",
+            offline        : "com.keruyun.calm:calm-offline:1.0.0-SNAPSHOT",
+            skinAppcompat  : "com.keruyun.calm.skin:appcompat-v7:$CALM_SKIN_VERSION",
+            skinConstraint : "com.keruyun.calm.skin:constraint-layout:$CALM_SKIN_VERSION",
+            skinCardview   : "com.keruyun.calm.skin:cardview:$CALM_SKIN_VERSION",
+            print          : "com.keruyun.print:print:2.23.0-SNAPSHOT",
+            onposmachine   : [group: 'com.keruyun.calm', name: 'onposmachine', version: '3.0.1', classifier: 'release', ext: 'jar'],
+            otsdk          : "com.keruyun.calm:ot-sdk:SPRINT-2001-SNAPSHOT"
+    ]
+    //third libs
+    third = [
+            AAapi              : "org.androidannotations:androidannotations-api:4.6.0",
+            AA                 : "org.androidannotations:androidannotations:4.6.0",
+            arouter            : "com.alibaba:arouter-api:1.2.4",
+            arouterCompile     : "com.alibaba:arouter-compiler:1.1.4",
+            zxing              : "com.google.zxing:core:3.3.0",
+            okhttp3            : "com.squareup.okhttp3:okhttp:3.8.1",
+            ormlite            : "com.j256.ormlite:ormlite-android:4.48",
+            ptrLoadMore        : "in.srain.cube:ptr-load-more:1.0.2",
+            kotlinStdlibJDK    : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION",
+            swipeToLoadLayout  : "com.github.Aspsine:SwipeToLoadLayout:1.0.4",
+            swipemenulistview  : "com.baoyz.swipemenulistview:library:1.3.0",
+            umengCommon        : "com.umeng.sdk:common:1.5.0",
+            umengAnalytics     : "com.umeng.sdk:analytics:7.5.0",
+            eventbus           : [group: 'de.greenrobot.event', name: 'eventbus', version: '2.2.1', classifier: 'release', ext: 'jar'],
+            pinyin4j           : "com.github.open-android:pinyin4j:2.5.0",
+            studioAcmLog       : "com.studio.plugin:studio-acm-log:1.1.190507",
+            commmonIo          : [group: 'commons-io', name: 'commons-io', version: '2.4'],
+            commonsLang3       : [group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'],
+            qiniuAndroid       : "com.qiniu:qiniu-android-sdk:7.2.2",
+            qiniuHappyDns      : "com.qiniu:happy-dns:0.2.9",
+            retrofit           : "com.squareup.retrofit2:retrofit:2.4.0",
+            retrofitCvtGson    : "com.squareup.retrofit2:converter-gson:2.4.0",
+            rxAndroid          : "io.reactivex.rxjava2:rxandroid:2.0.2",
+            rxBinding          : "com.jakewharton.rxbinding2:rxbinding:2.2.0",
+            xutils             : "org.xutils:xutils:3.5.1",
+            leakcanary_debug   : "com.squareup.leakcanary:leakcanary-android:1.5.4",
+            leakcanary_release : "com.squareup.leakcanary:leakcanary-android-no-op:1.5.4",
+            blockcanary_debug  : "com.github.markzhai:blockcanary-android:1.5.0",
+            blockcanary_release: "com.github.markzhai:blockcanary-no-op:1.5.0",
+            proto_buffer       : "com.google.protobuf:protobuf-java:3.5.1",
+            flexbox            : "com.google.android:flexbox:2.0.0"
+
+    ]
+
+//    dependencies = [
+//            "baiduLBS" : files('libs/BaiduLBS_Android.jar'),
+//            "core"     : files('libs/core_3.2.0.jar'),
+//            "libamm"   : files('libs/libammsdk.jar'),
+//            "mta-sdk"  : files('libs/mta-sdk-1.6.2.jar'),
+//            "open_sdk" : files('libs/open_sdk_r5756.jar'),
+//            "pgyer_sdk": files('libs/pgyer_sdk_2.4.5.jar'),
+//
+//            "butterknife"           :'com.jakewharton:butterknife:8.8.1',
+//            "butterknife-compiler"  :'com.jakewharton:butterknife-compiler:8.8.1',
+//    ]
+
+    retail = [
+//            butterknife_core         : "com.jakewharton:butterknife:10.2.1",
+//            butterknife_compiler     : "com.jakewharton:butterknife-compiler:10.2.1",
+            rxandroid                : "io.reactivex.rxjava2:rxandroid:2.1.0",
+            rxbinding                : "com.jakewharton.rxbinding2:rxbinding:2.0.0",
+            rxlifecycle              : "com.trello.rxlifecycle2:rxlifecycle-components:2.2.2",
+    ]
+}

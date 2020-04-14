@@ -1,0 +1,41 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: 'config.gradle' //应用脚本插件
+//apply plugin: 'java' //通过plugin id应用
+//apply plugin: org.gradle.api.plugins.JavaPlugin //通过插件类型应用
+//apply plugin: JavaPlugin //由于org.gradle.api.plugins包默认导入，故可简写应用
+
+//配置当前工程的构建脚本路径
+//给定闭包是针对当前工程的ScriptHandler执行的。ScriptHandler被传递到闭包作为闭包的委托对象。
+buildscript {
+
+    //为脚本的依赖配置仓库。给定闭包是针对RepositoryHandler执行的。RepositoryHandler被传递到闭包作为闭包的委托对象。
+    repositories {
+        google() //添加一个Google的Maven仓库的依赖
+        jcenter() //添加一个Bintray的JCenter仓库的依赖
+    }
+
+    //为脚本配置依赖。给定闭包是针对DependencyHandler执行的。DependencyHandler被传递到闭包作为闭包的委托对象。
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.2' //此处依赖Android Gradle插件
+
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+//配置当前工程与其子工程。
+//给定的闭包是针对当前工程与其子工程执行的。目标工程被传递到闭包作为闭包的委托对象。
+allprojects {
+
+    //为当前工程配置仓库。给定闭包是针对RepositoryHandler执行的。RepositoryHandler被传递到闭包作为闭包的委托对象。
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+//定义一个Task，继承自Delete
+task clean(type: Delete) {
+    delete rootProject.buildDir //删除指定目录
+}

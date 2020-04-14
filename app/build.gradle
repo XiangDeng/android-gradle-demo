@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'//应用二进制插件，app应用工程
+
+android {
+    compileSdkVersion 29 //配置编译Android工程的SDK版本
+    buildToolsVersion "29.0.3" //配置Android构建工具的版本
+
+    //为Android插件应用到所有构件变体的属性指定默认值。
+    //当配置ProductFlavor时，你可以覆写任何defaultConfig属性。
+    defaultConfig {
+        applicationId "com.keruyun.androidgradledemo" //配置包名
+        minSdkVersion 16 //最低支持的Android系统的版本
+        targetSdkVersion 29 //开发所基于的Android系统版本
+        versionCode 1 //App应用内部版本号
+        versionName "1.0" //App应用版本名称
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner" //配置单元测试时所使用的的Runner
+    }
+
+    //为当前工程封装所有buildType配置
+    buildTypes {
+        release {
+            minifyEnabled false //是否为该构建类型启用混淆
+            //添加新的混淆配置文件
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+//配置当前工程的依赖。
+//这个方法执行给定的闭包是针对当前工程的DependencyHandler的。DependencyHandler被传递到闭包作为闭包的委托对象。
+dependencies {
+    //依赖libs目录下所有jar包，该依赖方式所依赖的库不会传递，只会在当前module中生效。
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

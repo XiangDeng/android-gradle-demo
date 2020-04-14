@@ -1,0 +1,5 @@
+rootProject.name='AndroidGradleDemo'
+include ':app'
+include ':learngroovydemo'
+include ':learntaskdemo'
+include ':learngroovyplugin'

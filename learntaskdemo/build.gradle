@@ -1,0 +1,115 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+/**********学习Task**********/
+/**
+ * 创建Task
+ */
+//通过Project中的task(String name)方法创建任务
+def customTask1 = task("customTask1")
+customTask1.doLast {
+    println "使用task(String name)创建任务"
+}
+
+
+//通过Project中的create(String name)方法创建任务
+def customTask2 = tasks.create("customTask2")
+customTask2.doLast {
+    println "使用create(String name)创建任务"
+}
+
+
+/**
+ * 配置Task
+ */
+//使用Map参数配置任务
+def customTask3 = task(dependsOn: customTask1, description: "customTask3依赖customTask1，且属于OnOS Task分组", group: "OnOS Task", "customTask3")
+customTask3.doLast {
+    println "使用task(Map<String, ?> args, String name)创建并配置任务"
+}
+
+//使用闭包的方式对任务进行配置
+task customTask4 {
+    dependsOn customTask2
+    description "customTask4依赖customTask2，且属于OnOS Task分组"
+    group "OnOS Task"
+
+    println "使用task(String name, Closure configureClosure)创建并配置任务"
+}
+
+/**
+ * 访问Task
+ */
+def customTask5 = task("customTask5")
+customTask5.doLast {
+    println "通过任务名方式访问customTask5"
+}
+tasks['customTask5'].doLast {
+    println "通过TaskContainer集合方式访问customTask5"
+}
+//tasks.findByPath(':customTask5').doLast {
+//    println "通过TaskContainer的findByPath方法访问customTask5"
+//}
+tasks.findByName('customTask5').doLast {
+    println "通过TaskContainer的findByName方法访问customTask5"
+}
+//tasks.getByPath(':customTask5').doLast {
+//    println "通过TaskContainer的getByPath方法访问customTask5"
+//}
+tasks.getByName('customTask5').doLast {
+    println "通过TaskContainer的getByName方法访问customTask5"
+}
+
+/**
+ * Task执行流程
+ */
+task customTask6(type: CustomTask) {
+
+    doFirst {
+        println "Task执行之前执行：doFirst()"
+    }
+
+    doLast {
+        println "Task执行之后执行：doLast()"
+    }
+}
+
+class CustomTask extends DefaultTask {
+    @TaskAction
+    def doSelf() {
+        println "Task自己本身在执行：doSelf()"
+    }
+}
+
+/**********学习Task**********/

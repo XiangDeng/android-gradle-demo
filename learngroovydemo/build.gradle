@@ -1,0 +1,157 @@
+apply plugin: 'com.android.library' //应用二进制插件，library 库工程
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+/**********学习Groovy**********/
+
+/**
+ * 学习Groovy String
+ */
+task("learnGroovyString").doLast {
+    def str1 = '单引号'
+    def str2 = "双引号"
+    def str3 = '''三引号'''
+
+    println "单引号定义的字符串类型:" + str1.getClass().toString()
+    println "双引号定义的字符串类型:" + str2.getClass().toString()
+    println "三引号定义的字符串类型:" + str3.getClass().toString()
+    println "++++++++++"
+
+
+    def companyName = "时时同云"
+    def singleQuote = '我们公司名称是${companyName}'
+    def doubleQuote = "我们公司名称是${companyName}"
+    def multiLines = ''' 我们
+     公司
+     名称是
+     ${companyName}'''
+    println "++++++++++"
+
+    println singleQuote
+    println doubleQuote
+    println multiLines
+}
+
+/**
+ * 学习Groovy List
+ */
+task("learnGroovyList").doLast {
+    printList()
+    findListElement()
+    listIterator()
+}
+
+//声明并打印一个Groovy List的类型
+def printList() {
+    //声明List
+    def list = [12, "keruyun", true]
+    //打印List的类型
+    println "list的数据类型为${list.getClass().name}"
+}
+
+//查找List中的元素
+def findListElement() {
+    //声明List
+    def list = [12, "keruyun", true, "shishike"]
+    //查找List中的元素
+    println list[1]//查找第二个元素
+    println list[-1]//查找倒数第一个元素
+    println list[-2]//查找倒数第二个元素
+    println list[1..3]//查找二到四个元素
+}
+
+//遍历List
+def listIterator() {
+    //声明List
+    def list = [12, "keruyun", true, "shishike"]
+    //遍历List
+    list.each {
+        println "List遍历 ${it}"
+    }
+}
+
+/**
+ * 学习Groovy Map
+ */
+task("learnGroovyMap").doLast {
+    printMap()
+    findMapElement()
+    mapIterator()
+}
+
+//声明一个Map
+def printMap() {
+    //声明一个Map
+    def map = ["name": "时时同云", "address": "天府软件园"]
+    //打印Map的数据类型
+    println "Map的数据类型为${map.getClass().name}"
+}
+
+//查找Map中的元素
+def findMapElement() {
+    //声明一个Map
+    def map = ["name": "时时同云", "address": "天府软件园"]
+    //查找Map中的元素
+    println map["address"]
+    println map.name
+}
+
+//遍历Map
+def mapIterator() {
+    //声明一个Map
+    def map = ["name": "时时同云", "address": "天府软件园"]
+    //遍历map
+    map.each {
+        println "Key:${it.key},Value:${it.value}"
+    }
+}
+
+/**
+ * 学习Groovy Closure
+ */
+task("learnGroovyClosure").doLast {
+    //闭包对象closure1&调用
+    def closure1 = {
+        println "hello closure1"
+    }
+    closure1()
+    closure1.call()
+
+    //闭包对象closure2&调用
+    def closure2 = { String x ->
+        println "hello ${x}"
+    }
+    closure2("closure2")
+    closure2.call("closure2")
+}
+
+/**********学习Groovy**********/
